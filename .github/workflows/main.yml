@@ -7,6 +7,10 @@ on:
 jobs:
   build-angular-app:
     runs-on: ubuntu-latest
+    # concurrency concept is that when multiple comments push at same time they create the build of latest comment and ignore the the previous all of that
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
 
     steps:
       - uses: actions/checkout@v6.0.2
